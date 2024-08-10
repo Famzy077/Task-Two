@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <link rel="stylesheet" href="/style/index.css">
+    <link rel="stylesheet" href="../fonts/css/all.css">
+</head>
+<body>
+    <div class="music">
+        <nav>
+            <div class="box">
+                <div class="iconBox">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <div class="iconBox">
+                    <i class="fa-solid fa-less-than"></i>
+                </div>
+                <div class="iconBox">
+                    <i class="fa-solid fa-greater-than"></i>
+                </div>
+            </div>
+
+            <div class="boxInfo">
+                <div class="icon-box">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <div class="searchBox">
+                    <input  type="search" id="inputText" placeholder="What do you want to play?         |">  
+                    <div class="iconInput">
+                        <div>
+                            <i id="getIcon" class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                        <div>
+                            <span>Browse</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-box">
+                <div class="search-Box">
+                    <i class="fa-regular fa-bell"></i>
+                </div>
+                <div class="iconbox">
+                    <div class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </div>
+
+                <div class="icon-box_">
+                    <i class="fa-solid fa-3"></i>
+                </div>
+                
+            </div>
+        </nav>
+        <div class="contain">
+            
+            <section class='section'>
+                <header>
+                    <div class="image-box">
+                        <img src="/images//library.png" alt="library image">
+                    </div>
+                    
+                    <div>
+                        <h1>Your Library</h1>
+                    </div>
+                </header>
+            </section>
+            
+            <div class="iframe">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/6rdVcCcUOkf0UbuEm7i5Tu?utm_source=generator"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <div class="more">
+            <h2 >Explore</h2>
+        </div>
+    </div>
+
+
+    <script>
+        let click = () => {
+            alert('hello world ')
+        }
+        let inputText = document.querySelector('#inputText')
+        let getIcon = document.getElementById('getIcon')   
+        console.log(inputText)
+        inputText.addEventListener('input', () => {
+            if(inputText.value === ''){
+                getIcon.style.display = 'block'
+                console.log(`You click ${inputText}`)
+            }else{
+                getIcon.style.display = 'none'
+            }
+        })
+        var audio = document.querySelector('iframe');
+        audio.addEventListener('load', function(e) {
+            e.preventDefault()
+            audio.contentWindow.postMessage('{"type":"PLAY","uri":"https://open.spotify.com/track"}')
+
+        })
+    </script>
+</body>
+</html>
